@@ -1,5 +1,6 @@
 %...Selection Routine..
-function sel_pop = selection(pop,opt)
+function sel_pop = selection(pop)
+    global opt
     pop_size = size(pop,1);%..number of rows is the population size
     
     %...initiating shuffled arrays...
@@ -10,11 +11,12 @@ function sel_pop = selection(pop,opt)
     sel_pop = zeros(size(pop));
     
     for i = 1:pop_size
-        sel_pop(i,:) = tourselect(pop(a1(i),:),pop(a2(i),:),opt);
+        sel_pop(i,:) = tourselect(pop(a1(i),:),pop(a2(i),:));
     end
 end
 
-function sel_ind = tourselect(ind1,ind2,opt)
+function sel_ind = tourselect(ind1,ind2)
+    global opt
     main_len = opt.n_var + opt.n_cons + 2;
     if (ind1(main_len) == 0) && (ind2(main_len) == 0) %.. both are feasible
         if ind1(main_len - 1) <= ind2(main_len - 1)

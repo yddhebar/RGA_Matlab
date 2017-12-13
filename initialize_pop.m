@@ -9,7 +9,8 @@
 %     each row in init pop is an individual
 %     each individual = [n_var, n_cons, fitness,cons_violation]
 
-function init_pop = initialize_pop(opt)
+function init_pop = initialize_pop()
+    global opt
     ind_size = opt.n_var + opt.n_cons + 1 + 1;
     init_pop = zeros(opt.pop_size,ind_size);
     for i = 1:opt.pop_size
